@@ -1,0 +1,101 @@
+{
+  "src_folders": [
+    "./test/frontend/tests"
+  ],
+  "output_folder": "./test/data/reports",
+  "page_objects_path": ["./test/frontend/pages/todos"],
+  "custom_commands_path": "./test/frontend/custom-commands",
+  "custom_assertions_path": "",
+  "globals_path": "./test/data/globals",
+  "live_output": false,
+  "parallel_process_delay": 10,
+  "disable_colors": false,
+  "test_workers": false,
+  "selenium": {
+    "start_process": true,
+    "server_path": "./node_modules/selenium-server-standalone-jar/jar/selenium-server-standalone-2.53.1.jar",
+    "log_path": "",
+    "host": "127.0.0.1",
+    "port": 4444,
+    "cli_args": {
+      "webdriver.chrome.driver": "./node_modules/chromedriver/lib/chromedriver/chromedriver",
+      "webdriver.ie.driver": "",
+      "webdriver.firefox.profile": ""
+    }
+  },
+  "test_settings": {
+    "default": {
+      "launch_url": "http://localhost:3000",
+      "selenium_port": 4444,
+      "selenium_host": "localhost",
+      "silent": true,
+      "screenshots": {
+        "enabled": false,
+        "path": ""
+      },
+      "desiredCapabilities": {
+        "browserName": "chrome",
+        "javascriptEnabled": true,
+        "acceptSslCerts": true
+      }
+    },
+    "sauce-test": {
+      "launch_url": "localhost:3000",
+      "selenium_port": 80,
+      "selenium_host": "ondemand.saucelabs.com",
+      "silent": true,
+      "username": "YOUR_USERNAME",
+      "access_key": "YOUR_ACCESS_KEY",
+      "screenshots": {
+        "enabled": false,
+        "path": "screenshots"
+      },
+      "desiredCapabilities": {
+        "browserName": "chrome",
+        "platform": "windows 10",
+        "version": "51",
+        "javascriptEnabled": true,
+        "acceptSslCerts": true
+      }
+    },
+    "firefox": {
+      "launch_url": "localhost:3000",
+      "selenium_host": "127.0.0.1",
+      "selenium_port": 4444,
+      "silent": true,
+      "disable_colors": false,
+      "screenshots": {
+        "enabled": true,
+        "on_failure": true,
+        "on_error": true,
+        "path": "./test/screenshots"
+      },
+      "desiredCapabilities": {
+        "browserName": "firefox",
+        "javascriptEnabled": true,
+        "acceptSslCerts": true
+      }
+    },
+    "safari": {
+      "launch_url": "localhost:3000",
+      "selenium_host": "127.0.0.1",
+      "selenium_port": 4444,
+      "silent": true,
+      "disable_colors": false,
+      "screenshots": {
+        "enabled": true,
+        "on_failure": true,
+        "on_error": true,
+        "path": "./test/screenshots"
+      },
+      "desiredCapabilities": {
+        "browserName": "safari",
+        "javascriptEnabled": true,
+        "acceptSslCerts": true
+      }
+    }
+  },
+  "qualitywatcher_config": {
+    "output_on_console": true
+  }
+}

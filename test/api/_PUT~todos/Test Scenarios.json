@@ -1,0 +1,8 @@
+[
+    {
+        "Test Scenario": "Verify that the todo is saved correctly",
+        "Test Desscription": "This test should make a valid request to the endpoint and update the todo accordingly",
+        "url": "http://localhost:3000/api/todos",
+        "type":"PUT"
+    }
+]

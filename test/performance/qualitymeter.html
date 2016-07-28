@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html>
+  <title>qualitymeter</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+      body{
+      	background-color: #eee
+      }
+      
+      h1{
+      	margin-bottom: 2em
+      	color: rgba(0, 0, 0, 0.4)
+      }
+      
+      h1>span{
+      	color: #4aa2a2
+      }
+      
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <h1 class="text-center">quality<span>meter</span></h1>
+    </div>
+    <div class="container">
+      <div class="charts">
+        <div class="row"></div><br/>
+        <h2 class="text-center">Metric Charts per URL</h2>
+        <div class="row" id="metrics"></div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.6/Chart.min.js"></script>
+    <script>var data = {"http://localhost:3000/":[{"metrics.timeToFirstByte":7,"metrics.domInteractive":38,"metrics.domComplete":67,"metrics.DOMelementsCount":31,"url":"http://localhost:3000/","startTime":"Jul 28th, 2016 11:23:34 am","endTime":"Jul 28th, 2016 11:23:38 am","total_load_time":74,"friendly_name":"Total Loading Time"},{"metrics.timeToFirstByte":6,"metrics.domInteractive":39,"metrics.domComplete":66,"metrics.DOMelementsCount":31,"url":"http://localhost:3000/","startTime":"Jul 28th, 2016 11:23:40 am","endTime":"Jul 28th, 2016 11:23:41 am","total_load_time":72,"friendly_name":"Total Loading Time"},{"metrics.timeToFirstByte":7,"metrics.domInteractive":39,"metrics.domComplete":66,"metrics.DOMelementsCount":31,"url":"http://localhost:3000/","startTime":"Jul 28th, 2016 11:23:43 am","endTime":"Jul 28th, 2016 11:23:45 am","total_load_time":73,"friendly_name":"Total Loading Time"},{"metrics.timeToFirstByte":7,"metrics.domInteractive":38,"metrics.domComplete":64,"metrics.DOMelementsCount":31,"url":"http://localhost:3000/","startTime":"Jul 28th, 2016 11:23:46 am","endTime":"Jul 28th, 2016 11:23:51 am","total_load_time":71,"friendly_name":"Total Loading Time"},{"metrics.timeToFirstByte":7,"metrics.domInteractive":39,"metrics.domComplete":67,"metrics.DOMelementsCount":31,"url":"http://localhost:3000/","startTime":"Jul 28th, 2016 11:24:10 am","endTime":"Jul 28th, 2016 11:24:14 am","total_load_time":74,"friendly_name":"Total Loading Time"},{"metrics.timeToFirstByte":7,"metrics.domInteractive":38,"metrics.domComplete":63,"metrics.DOMelementsCount":31,"url":"http://localhost:3000/","startTime":"Jul 28th, 2016 11:24:40 am","endTime":"Jul 28th, 2016 11:24:44 am","total_load_time":70,"friendly_name":"Total Loading Time"},{"metrics.timeToFirstByte":6,"metrics.domInteractive":40,"metrics.domComplete":67,"metrics.DOMelementsCount":31,"url":"http://localhost:3000/","startTime":"Jul 28th, 2016 11:24:46 am","endTime":"Jul 28th, 2016 11:24:48 am","total_load_time":73,"friendly_name":"Total Loading Time"}]};
+      var metricChartCount = 0;
+      var resourceSizeChartCount = 0;
+      var resourceSpeedChartCount = 0;
+      
+      //Metrics charts - 5 per url
+      Object.keys(data).forEach(function(key){
+      	
+      	var _results = data[key];
+      	$('#metrics').append('<div class="col-md-12" ><canvas  width="400" height="200" id=metricChart'+metricChartCount+'></canvas></div>');
+      
+      	var metricCtx = $("#metricChart"+metricChartCount);
+      	var metricsLineGraph = new Chart(metricCtx, {
+      	type: 'line',
+      	data: getMetricsData(_results),
+      		options: {
+      			title: {
+      				display: true,
+      				text: 'Overall Site Metrics - '+key
+      			},
+      			scales: {
+      				yAxes: [{
+      					scaleLabel: {
+      						display: true,
+      						labelString: 'ms'
+      					}
+      				}]
+      			}
+      		}
+      	});
+      
+      	$('#metrics').append('<div class="col-md-12" ><canvas  width="400" height="200" id=elementCount'+metricChartCount+'></canvas></div>');
+      	var countCtx = $("#elementCount"+metricChartCount);
+      	var countLineGraph = new Chart(countCtx, {
+      	type: 'line',
+      	data: {
+      		labels:_results.map(function(a) {return a.startTime;}),
+      		datasets:[
+      			{
+      				label: 'Page elements',
+      				fill: true,
+      				lineTension: 0.1,
+      				backgroundColor: "rgba(75,192,192,0.2)",
+      				borderColor: "rgba(75,192,192,1)",
+      				borderCapStyle: 'butt',
+      				borderDash: [],
+      				borderDashOffset: 0.0,
+      				borderJoinStyle: 'miter',
+      				pointBorderColor: "rgba(75,192,192,1)",
+      				pointBackgroundColor: "#fff",
+      				pointBorderWidth: 1,
+      				pointHoverRadius: 5,
+      				pointHoverBackgroundColor: "rgba(75,192,192,1)",
+      				pointHoverBorderColor: "rgba(220,220,220,1)",
+      				pointHoverBorderWidth: 1,
+      				pointRadius: 1,
+      				pointHitRadius: 10,
+      				data: _results.map(function(a) {return a["metrics.DOMelementsCount"];}),
+      				spanGaps: false,
+      				borderWidth:1
+      			}
+      		]
+      	},
+      		options: {
+      			title: {
+      				display: true,
+      				text: 'Total page elements - '+key
+      			}
+      		}
+      	});
+      
+      
+      	metricChartCount++;
+      });
+      
+      function getMetricsData(data){
+      	var _data = data;
+      
+      	var metricData = {
+      		labels: _data.map(function(a) {return a.startTime;}),
+      		datasets: [
+      			{
+      				label: 'First http response',
+      				fill: false,
+      				lineTension: 0.1,
+      				backgroundColor: "rgba(75,192,192,0.4)",
+      				borderColor: "rgba(75,192,192,1)",
+      				borderCapStyle: 'butt',
+      				borderDash: [],
+      				borderDashOffset: 0.0,
+      				borderJoinStyle: 'miter',
+      				pointBorderColor: "rgba(75,192,192,1)",
+      				pointBackgroundColor: "#fff",
+      				pointBorderWidth: 1,
+      				pointHoverRadius: 5,
+      				pointHoverBackgroundColor: "rgba(75,192,192,1)",
+      				pointHoverBorderColor: "rgba(220,220,220,1)",
+      				pointHoverBorderWidth: 1,
+      				pointRadius: 1,
+      				pointHitRadius: 10,
+      				data: _data.map(function(a) {return a["metrics.timeToFirstByte"];}),
+      				spanGaps: false,
+      				borderWidth:1
+      			},
+      			{
+      				label: 'Time for page model constructed',
+      				fill: false,
+      				lineTension: 0.1,
+      				backgroundColor: "rgba(255, 99, 132, 0.4)",
+      				borderColor: "rgba(255,99,132,1)",
+      				borderCapStyle: 'butt',
+      				borderDash: [],
+      				borderDashOffset: 0.0,
+      				borderJoinStyle: 'miter',
+      				pointBorderColor: "rgba(255,99,132,1)",
+      				pointBackgroundColor: "#fff",
+      				pointBorderWidth: 1,
+      				pointHoverRadius: 5,
+      				pointHoverBackgroundColor: "rgba(255,99,132,1)",
+      				pointHoverBorderColor: "rgba(220,220,220,1)",
+      				pointHoverBorderWidth: 1,
+      				pointRadius: 1,
+      				pointHitRadius: 10,
+      				data: _data.map(function(a) {return a["metrics.domInteractive"];}),
+      				borderWidth:1,
+      				spanGaps: false
+      			},
+      			{
+      				label: 'Page Loading Time',
+      				fill: false,
+      				lineTension: 0.1,
+      				backgroundColor: "rgba(255, 206, 86, 0.4)",
+      				borderColor: "rgba(255, 206, 86, 1)",
+      				borderCapStyle: 'butt',
+      				borderDash: [],
+      				borderDashOffset: 0.0,
+      				borderJoinStyle: 'miter',
+      				pointBorderColor: "rgba(255, 206, 86, 1)",
+      				pointBackgroundColor: "#fff",
+      				pointBorderWidth: 1,
+      				pointHoverRadius: 5,
+      				pointHoverBackgroundColor: "rgba(255, 206, 86, 1)",
+      				pointHoverBorderColor: "rgba(220,220,220,1)",
+      				pointHoverBorderWidth: 1,
+      				pointRadius: 1,
+      				pointHitRadius: 10,
+      				data: _data.map(function(a) {return a["metrics.domComplete"];}),
+      				borderWidth:1,
+      				spanGaps: false
+      			},
+      			{
+      				label: 'Total Loading Time',
+      				fill: false,
+      				lineTension: 0.1,
+      				backgroundColor: "rgba(255, 159, 64, 0.4)",
+      				borderColor: "rgba(255, 159, 64, 1)",
+      				borderCapStyle: 'butt',
+      				borderDash: [],
+      				borderDashOffset: 0.0,
+      				borderJoinStyle: 'miter',
+      				pointBorderColor: "rgba(255, 159, 64, 1)",
+      				pointBackgroundColor: "#fff",
+      				pointBorderWidth: 1,
+      				pointHoverRadius: 5,
+      				pointHoverBackgroundColor: "rgba(255, 159, 64, 1)",
+      				pointHoverBorderColor: "rgba(220,220,220,1)",
+      				pointHoverBorderWidth: 1,
+      				pointRadius: 1,
+      				pointHitRadius: 10,
+      				data: _data.map(function(a) {return a["total_load_time"];}),
+      				borderWidth:1,
+      				spanGaps: false
+      			}
+      		]
+      	};
+      
+      	return metricData
+      }
+    </script>
+  </body>
+</html>

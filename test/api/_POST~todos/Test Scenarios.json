@@ -1,0 +1,8 @@
+[
+    {
+        "Test Scenario": "Verify you can create a test",
+        "Test Desscription": "This test should make a valid request to the endpoint and update the todo accordingly",
+        "url": "http://localhost:3000/api/todos",
+        "type":"POST"
+    }
+]

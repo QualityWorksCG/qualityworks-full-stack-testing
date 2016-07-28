@@ -1,0 +1,15 @@
+{
+   "urls": ["http://localhost:3000"],
+   "output_to_screen": true,
+   "save_to_file": "./test/performance/qualitymeter.json",
+   "file_write_format": "a",
+   "report_output": "./test/performance/qualitymeter.html",
+   "report_template":"",
+   "timeout": 20,
+   "whitelist": [
+      "metrics.timeToFirstByte",
+      "metrics.domInteractive",
+      "metrics.domComplete",
+      "metrics.DOMelementsCount"
+  ]
+}

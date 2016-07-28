@@ -1,0 +1,16 @@
+node_modules
+selenium-debug.log
+
+### OSX ###
+.DS_Store
+
+### Node ###
+node_modules
+npm-debug.log
+
+### Nightwatch ###
+reports
+screenshots
+
+.qualitywatcher.yml
+.idea
