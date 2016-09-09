@@ -24,6 +24,7 @@ $ npm run gulp
 Navigate to `http://localhost:3000` to view the app.
 
 _*Ensure Mongodb is running and JAVA is installed*_
+   * _If Mongodb is not on your system, use this [link](https://docs.mongodb.com/manual/administration/install-community/) for installation instructions_
 
 ### Automation
 
