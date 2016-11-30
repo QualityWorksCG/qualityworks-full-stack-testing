@@ -14,6 +14,9 @@ It utilises the following technologies:
 
 The MEAN Todo App that is used in this project was cloned from https://github.com/arvindr21/MEAN-Todo-App.
 
+### [Node Interactive Presentation on Full Stack Testing - *click me!🙂*](http://slides.com/qualityworks/deck-163bf83b-7b54-4e9d-b6ca-6c26ce4061cf/fullscreen)
+
+
 ### Install & Run Application
 ```
 $ git clone https://github.com/QualityWorksCG/qualityworks-full-stack-testing.git
