@@ -42,7 +42,7 @@ _*Ensure Mongodb is running and JAVA is installed*_
         Frontend Tests - npm run test:frontend
 
 * Run tests and see reports on [qualitywatcher.io](http://qualitywatcher.io/) dashboard
-    * See [qualitywatcher](https://github.com/QualityWorksCG/qualitywatcher) node mdoule for setup
+    * See [qualitywatcher](https://github.com/QualityWorksCG/qualitywatcher) node module for setup
 
     _If you need to see these results on your own qualitywatcher.io dashboard, 
     please fork this 
