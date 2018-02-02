@@ -1,3 +1,11 @@
+var HtmlReporter = require('nightwatch-html-reporter');
+var reporter = new HtmlReporter({
+	openBrowser: false,
+  reportsDirectory: __dirname + '/../reports/functional/',
+  reportFilename: 'functional-report.html',
+  themeName: 'default'
+});
+
 module.exports = {
 
  /*
@@ -29,7 +37,11 @@ module.exports = {
    */
   KEYS: {
     BACKSPACE: "\b"
-  }
+  },
 
+  /*
+   * Configure nightwatch reporter
+   */
+  reporter: reporter.fn
 
 };

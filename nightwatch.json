@@ -2,7 +2,7 @@
   "src_folders": [
     "./test/frontend/tests"
   ],
-  "output_folder": "./test/data/reports",
+  "output_folder": "./test/reports/functional",
   "page_objects_path": ["./test/frontend/pages/todos"],
   "custom_commands_path": "./test/frontend/custom-commands",
   "custom_assertions_path": "",
