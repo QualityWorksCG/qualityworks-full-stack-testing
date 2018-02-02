@@ -4,8 +4,8 @@
   "description": "Suggested strucutre for all types of application tests.",
   "main": "server/app.js",
   "scripts": {
-    "start": "forever start server/app.js",
-    "stop": "forever stop server/app.js",
+    "start": "forever start --uid 'qw-app' server/app.js",
+    "stop": "forever stop 'qw-app'",
     "test": "npm-run-all test:*",
     "test:unit": "./node_modules/.bin/_mocha './test/unit/index.js'",
     "pretest": "npm start",

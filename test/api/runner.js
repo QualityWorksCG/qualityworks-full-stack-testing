@@ -10,7 +10,9 @@ var async = require('async');
 var path = require('path');
 
 var testInit = require('./lib/utils/TestSetup');
+var faker = require('../data/todos/faker');
 var testData = [];
+var recordId = null;
 
 //this hook is responsible for parsing the command line args
 //and loading the correct data for the correct APIs
@@ -35,11 +37,14 @@ before(function (next) {
                 next(err);
             } else {
                 testData = results;
+                faker(function(id) {
+                    recordId = id;
+                });
                 next();
             }
         })
     }
-})
+});
 
 it("Should test APIs", function () {
 
@@ -49,10 +54,10 @@ it("Should test APIs", function () {
                 scenarios.data.forEach(function (scenario) {
                     sendRequest(scenarios.api, scenario);
                 });
-            })
-        })
-    })
-})
+            });
+        });
+    });
+});
 
 function sendRequest(api, scenario) {
     describe("", function () {
@@ -62,12 +67,16 @@ function sendRequest(api, scenario) {
                 isCompleted: scenario.data.body.isCompleted
             }
 
+            if (scenario.type === "PUT") {
+                formData._id = recordId;
+            }
+
             return chakram.request(scenario.type, scenario.url, { body: formData }, { json: false }).then(function (responseObject) {
                 //Schema/Value Assertion
                 expect(responseObject).to.be.a.success(api, scenario.data.body);
-            })
-        })
-    })
+            });
+        });
+    });
 }
 // responsible for parse the command line arguments and returning an 
 // array of valid api folders to test
