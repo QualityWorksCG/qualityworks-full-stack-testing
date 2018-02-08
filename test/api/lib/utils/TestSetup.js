@@ -80,8 +80,8 @@ function createCustomMethods(apiFolderNames, next) {
         if (typeof (responseObject.body) !== 'object') {
             responseObject.body = JSON.parse(responseObject.body);
         }
-        
-        //thes expected values can also be a url, that has the json to be expected
+
+        //these expected values can also be a url, that has the json to be expected
         expect(responseObject).to.have.schema(responseSchema);
         expect(responseObject).to.have.status(200);
         expect(responseObject).to.comprise.of.json(expectedOutput);

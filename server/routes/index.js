@@ -29,7 +29,12 @@
         isCompleted: req.body.isCompleted,
         todo: req.body.todo
       }, {}, function (err, data) {
-        res.json(data);
+        db.todos.findOne({
+          _id: mongojs.ObjectId(req.body._id)
+        }, function(err, data) {
+          data.updatedExisting = true;
+          res.json(data);
+        });
       });
   });
 
