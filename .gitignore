@@ -13,3 +13,4 @@ screenshots
 
 .qualitywatcher.yml
 .idea
+*.out
