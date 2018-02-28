@@ -4,7 +4,7 @@
   "description": "Suggested strucutre for all types of application tests.",
   "main": "server/app.js",
   "scripts": {
-    "start": "forever start server/app.js",
+    "start": "NODE_ENV=production forever start server/app.js",
     "stop": "forever stop server/app.js",
     "test": "npm-run-all test:*",
     "test:unit": "./node_modules/.bin/_mocha './test/unit/index.js' --reporter mochawesome --reporter-options reportDir=./test/reports/unit,reportFilename=unit-report",
@@ -23,10 +23,12 @@
   "author": "QualityWorks Consulting Group Jamaica (http://qualityworkscg.com/)",
   "license": "MIT",
   "dependencies": {
-    "jsonfile": "4.0.0",
+    "0x": "^3.4.2",
+    "autocannon": "^2.0.0",
     "ejs": "^2.5.7",
     "express": "^4.8.5",
-    "forever": "0.15.3"
+    "forever": "0.15.3",
+    "jsonfile": "4.0.0"
   },
   "devDependencies": {
     "async": "2.6.0",

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="0"
+            tests="1">
+
+  <testsuite name="todos_simple"
+    errors="0" failures="0" hostname="" id="" package="todos_simple" skipped="0"
+    tests="1" time="1.019" timestamp="Thu, 08 Feb 2018 18:59:34 GMT">
+  
+    <testcase name="Verify that new todo/s can be created - Simple (no page objec)" classname="todos_simple" time="1.019" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+
+  
+
+  
+  </testsuite>
+</testsuites>
