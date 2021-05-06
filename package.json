@@ -52,7 +52,7 @@
     "gulp-watch": "5.0.0",
     "istanbul": "0.4.5",
     "jshint": "^2.10.2",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "mocha": "5.0.0",
     "mochawesome": "3.0.2",
     "mongojs": "2.4.1",
