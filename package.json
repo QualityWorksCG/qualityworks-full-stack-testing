@@ -34,7 +34,7 @@
     "jsonfile": "4.0.0"
   },
   "devDependencies": {
-    "async": "2.6.0",
+    "async": "3.2.2",
     "body-parser": "^1.6.5",
     "chai": "4.1.2",
     "chakram": "1.5.0",
