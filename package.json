@@ -44,7 +44,7 @@
     "data-driven": "1.4.0",
     "debug": "^3.1.0",
     "file-exists": "5.0.1",
-    "gulp": "^3.8.7",
+    "gulp": "^4.0.2",
     "gulp-jshint": "2.1.0",
     "gulp-livereload": "3.8.1",
     "gulp-mongodb-data": "3.0.0",
