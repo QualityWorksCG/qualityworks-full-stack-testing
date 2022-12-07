@@ -29,7 +29,7 @@
     "autocannon": "^2.0.0",
     "climem": "^1.0.3",
     "ejs": "^2.5.7",
-    "express": "^4.8.5",
+    "express": "^4.17.3",
     "forever": "0.15.3",
     "jsonfile": "4.0.0"
   },
