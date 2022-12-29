@@ -64,7 +64,7 @@
     "path": "0.12.7",
     "qualitymeter": "1.7.0",
     "qualitywatcher": "0.6.0",
-    "rewire": "3.0.2",
+    "rewire": "6.0.0",
     "selenium-server-standalone-jar": "3.8.1",
     "should": "13.2.1"
   },
